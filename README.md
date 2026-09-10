@@ -6,7 +6,7 @@ Backstage helps a production team assign microphones, IEM packs, and instrument 
 
 **[Open downloads and installation guides](https://github.com/pfteamboy24-source/backstage-downloads/releases)**
 
-Current release: **[Backstage Preview 11](https://github.com/pfteamboy24-source/backstage-downloads/releases/tag/v0.1.1-preview.11)**
+Current release: **[Backstage Preview 12](https://github.com/pfteamboy24-source/backstage-downloads/releases/tag/v0.1.1-preview.12)**
 
 No GitHub account, collaborator invitation, or access token is needed.
 
