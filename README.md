@@ -6,6 +6,8 @@ Backstage helps a production team assign microphones, IEM packs, and instrument 
 
 **[Open downloads and installation guides](https://github.com/pfteamboy24-source/backstage-downloads/releases)**
 
+Current release: **[Backstage Preview 11](https://github.com/pfteamboy24-source/backstage-downloads/releases/tag/v0.1.1-preview.11)**
+
 No GitHub account, collaborator invitation, or access token is needed.
 
 - **Windows 10/11, Intel/AMD 64-bit:** download the `Backstage-Setup-…-Windows-x64.exe` installer. Double-click to install and start the app. No terminal or Node.js installation is needed. Download `Windows.html` for the step-by-step guide.
@@ -20,6 +22,8 @@ Windows preview installers are unsigned. Pi hardware operation and coexistence w
 Open **Display & connections → App updates → Check for updates**. The host also checks at startup and every six hours when it has internet access. It verifies the download’s SHA-256 checksum. You choose when to run the installer; it does not automatically interrupt a service.
 
 If an older installation asks for a GitHub token, download and install the latest package here once. That switches future checks to public downloads. Close the Windows Backstage control window before updating; Pi installation restarts its service. Saved data is retained. Export a backup before updating.
+
+For a first-time headless Pi installation, connect over SSH and run the included PIN setup tool as the Backstage service account. The downloadable `Pi.html` guide contains the exact three commands and explains why initial PIN creation is limited to the host.
 
 ## Your data
 
