@@ -1,32 +1,65 @@
-# Backstage Production — downloads
+# Backstage Production
 
-Backstage helps a production team assign microphones, IEM packs, and instrument connections, then display each musician’s setup backstage.
+Backstage is a local-network production app for church service lineups, equipment assignments, team displays, and Companion controls. Front of house prepares each person's setup, publishes only what is ready, and sends clear information to backstage, stream, and production displays.
 
-## Download and install
+## Current release
 
-**[Open downloads and installation guides](https://github.com/pfteamboy24-source/backstage-downloads/releases)**
+**[Backstage Preview 13 — Final Preview](https://github.com/pfteamboy24-source/backstage-downloads/releases/tag/v0.1.1-preview.13)**
 
-Current release: **[Backstage Preview 12](https://github.com/pfteamboy24-source/backstage-downloads/releases/tag/v0.1.1-preview.12)**
+Preview 13 is the release candidate for the beta phase. Backstage is preview software undergoing real-world testing. Back up your data before updating, test it with non-critical equipment first, and keep your existing production workflow available until Backstage has been verified in your environment.
 
-No GitHub account, collaborator invitation, or access token is needed.
+## Choose your download
 
-- **Windows 10/11, Intel/AMD 64-bit:** download the `Backstage-Setup-…-Windows-x64.exe` installer. Double-click to install and start the app. No terminal or Node.js installation is needed. Download `Windows.html` for the step-by-step guide.
-- **Raspberry Pi 4/5, 64-bit Raspberry Pi OS with Desktop:** download `backstage-production_…_arm64.deb` and `Pi.html`. Open the guide in your browser for installation steps. Backstage starts automatically after boot. A terminal fallback is included if the desktop has no graphical package installer.
+| Host | Download | Use it for |
+| --- | --- | --- |
+| Windows 10/11 x64 | `Backstage-Setup-0.1.1-preview.13-Windows-x64.exe` | A Windows PC or virtual machine. Includes the runtime, desktop shortcut, and app control window. |
+| Raspberry Pi 4/5 arm64 | `backstage-production_0.1.1-preview13_arm64.deb` | 64-bit Raspberry Pi OS with a desktop or headless operation. Includes the runtime and automatic system service. |
+| Windows guide | `Windows.html` | Step-by-step installation and update instructions. |
+| Raspberry Pi guide | `Pi.html` | Desktop and headless installation, first-PIN commands, updates, and troubleshooting. |
 
-Choose the installer under **Assets**, rather than GitHub’s automatically generated “Source code” archives (those contain only this download repository’s documentation).
+Open the release, expand **Assets**, and choose the installer for the host that will run Backstage. Do not download GitHub's automatically generated **Source code** archives; this repository contains download documentation rather than the private application source.
 
-Windows preview installers are unsigned. Pi hardware operation and coexistence with Companion need testing on your own equipment before a production service. Mac and 32-bit Pi packages are not included.
+No GitHub account, collaborator invitation, access token, or separate Node.js installation is needed.
 
-## Updates
+## What Backstage does
 
-Open **Display & connections → App updates → Check for updates**. The host also checks at startup and every six hours when it has internet access. It verifies the download’s SHA-256 checksum. You choose when to run the installer; it does not automatically interrupt a service.
+- Builds service lineups manually or from Planning Center Services. Planning Center remains optional.
+- Keeps people and locally defined teams, imports each church's own Planning Center team names, and tracks confirmed, declined, or unconfirmed scheduling status.
+- Stores microphones, IEM packs, DI boxes, instruments, stage-box ports, notes, and reusable setups.
+- Keeps edits as drafts until front of house publishes them. Declined people are removed from live displays automatically.
+- Preserves past services as read-only history so previous assignments remain available.
+- Provides a full backstage lineup, a ProPresenter StageDisplay overlay, and up to 12 named team displays with custom layouts.
+- Can launch a chosen screen automatically on a monitor connected to a Windows, macOS, Linux, or Raspberry Pi host.
+- Uses separate Admin and Team PINs. Team access handles service work while host settings, credentials, backups, updates, and token management remain administrative.
+- Exports and restores backups while keeping host authentication and credentials separate.
+- Checks the public release feed, verifies installer checksums, and lets an administrator choose when to update.
+- Provides a scoped HTTP API for Bitfocus Companion actions and status feedback without sharing the Admin PIN.
+- Includes searchable Help & how-to instructions inside the app.
 
-If an older installation asks for a GitHub token, download and install the latest package here once. That switches future checks to public downloads. Close the Windows Backstage control window before updating; Pi installation restarts its service. Saved data is retained. Export a backup before updating.
+## Install or update
 
-For a first-time headless Pi installation, connect over SSH and run the included PIN setup tool as the Backstage service account. The downloadable `Pi.html` guide contains the exact three commands and explains why initial PIN creation is limited to the host.
+Before updating, open **Display & connections → Back up or restore your setup** and export a backup.
 
-## Your data
+On Windows, close the Backstage control window and run the new `.exe`. On a Pi, download the `.deb` and run:
 
-New installations start empty. Packages include runtime code, but no church equipment list, musician records, photos, Planning Center credentials, or PIN. Your saved setup stays on your app host. Connect your own Planning Center account if needed. Never upload your database, credentials, or private backup to this public repository.
+```sh
+sudo apt install ~/Downloads/backstage-production_0.1.1-preview13_arm64.deb
+```
 
-This repository distributes installers and guides. Development source and history are maintained separately.
+The Pi service restarts during installation, so update outside a live service. Saved data, PINs, Planning Center credentials, display layouts, and Companion tokens stay in the host data folder.
+
+For a first-time headless Pi installation, follow `Pi.html`. It includes the exact commands for setting the first Admin PIN as the Backstage service account.
+
+## Current testing limits
+
+- Windows installers are not code-signed yet, so Windows may show an unknown-publisher warning.
+- Raspberry Pi and Companion coexistence should be tested on the exact Pi model and production load before service use.
+- There is no packaged macOS installer. A Mac can use the portable runtime during development and can display any Backstage screen in a browser.
+- Companion uses its Generic HTTP connection in this preview; a dedicated Companion module may follow during beta.
+- Browser and ProPresenter web views must be tested on the church's actual display hardware and network.
+
+## Data and privacy
+
+New installations start empty. Public packages contain no church database, people, photos, equipment, PINs, Planning Center credentials, or Companion tokens. Windows data stays in `%LOCALAPPDATA%\Backstage\data`; Pi data stays in `/var/lib/backstage-production`. Installer updates preserve those folders.
+
+See the [complete release history](https://github.com/pfteamboy24-source/backstage-downloads/blob/main/CHANGELOG.md). Report a packaging or installation problem through the [downloads repository issues](https://github.com/pfteamboy24-source/backstage-downloads/issues).
